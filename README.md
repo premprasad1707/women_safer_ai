@@ -282,3 +282,7 @@ MIT License — free to use, modify, and distribute with attribution.
 <strong>⭐ Star this repo if you found it useful!</strong><br><br>
 <em>SafeHer AI — Intelligent Safety, Always On.</em>
 </div>
+
+ # #   S c r e e n s h o t 
+ ! [ D a s h b o a r d   S c r e e n s h o t ] ( s c r e e n s h o t . p n g )  
+ 
