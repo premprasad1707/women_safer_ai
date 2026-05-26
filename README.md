@@ -11,13 +11,6 @@
 
 </div>
 
-
-## 🖥️ Application Screenshot
-
-<div align="center">
-  <img src="screenshot.png" alt="Dashboard Screenshot" width="800">
-</div>
-
 ---
 
 ## 📋 Project Overview
@@ -291,6 +284,5 @@ MIT License — free to use, modify, and distribute with attribution.
 </div>
 
  # #   S c r e e n s h o t 
- ! [ D a s h b o a r d   S c r e e n s h o t ] ( s c r e e n s h o t . p n g ) 
- 
+ ! [ D a s h b o a r d   S c r e e n s h o t ] ( s c r e e n s h o t . p n g )  
  
