@@ -1,0 +1,369 @@
+{
+  "best_model": "Decision Tree",
+  "results": {
+    "Random Forest": {
+      "model": "Random Forest",
+      "accuracy": 0.998,
+      "f1_weighted": 0.998,
+      "report": {
+        "Safe": {
+          "precision": 0.9992982456140351,
+          "recall": 1.0,
+          "f1-score": 0.9996489996489997,
+          "support": 1424.0
+        },
+        "Medium Risk": {
+          "precision": 0.9956043956043956,
+          "recall": 0.9956043956043956,
+          "f1-score": 0.9956043956043956,
+          "support": 455.0
+        },
+        "High Risk": {
+          "precision": 0.9411764705882353,
+          "recall": 0.8888888888888888,
+          "f1-score": 0.9142857142857143,
+          "support": 18.0
+        },
+        "Emergency": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 103.0
+        },
+        "accuracy": 0.998,
+        "macro avg": {
+          "precision": 0.9840197779516665,
+          "recall": 0.9711233211233211,
+          "f1-score": 0.9773847773847774,
+          "support": 2000.0
+        },
+        "weighted avg": {
+          "precision": 0.9979709391124871,
+          "recall": 0.998,
+          "f1-score": 0.9979786591786592,
+          "support": 2000.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          1424,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          453,
+          1,
+          0
+        ],
+        [
+          0,
+          2,
+          16,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          103
+        ]
+      ],
+      "feature_importances": {
+        "latitude": 0.003444074997360841,
+        "longitude": 0.002988406092641559,
+        "hour": 0.023117883797098622,
+        "day_type": 0.000508959350122304,
+        "is_night": 0.06733611928743098,
+        "is_alone": 0.035209643621423696,
+        "crowd_density": 0.0054763975746512945,
+        "lighting_condition": 0.02033051213076496,
+        "crime_area_score": 0.007962238412060533,
+        "phone_motion_status": 0.01560605234592565,
+        "walking_speed": 0.0029876498729829093,
+        "distance_from_home": 0.003915356779700359,
+        "distance_from_safe_zone": 0.0032894747314710674,
+        "battery_level": 0.007945586540916231,
+        "network_status": 0.0010299826054031447,
+        "weather_condition": 0.0010548276089068747,
+        "panic_button": 0.10482725227847318,
+        "unusual_movement": 0.0071190826163500375,
+        "time_spent_at_location": 0.002396063510217033,
+        "nearest_trusted_contact_distance": 0.0030239032546600683,
+        "night_risk_score": 0.07197276975604426,
+        "isolation_score": 0.05142674562083457,
+        "movement_risk_score": 0.016874503003883476,
+        "location_risk_score": 0.009658714551150135,
+        "emergency_score": 0.07846860260241355,
+        "total_risk_score": 0.4520291970571127
+      }
+    },
+    "Logistic Regression": {
+      "model": "Logistic Regression",
+      "accuracy": 0.9935,
+      "f1_weighted": 0.9933,
+      "report": {
+        "Safe": {
+          "precision": 0.9971929824561403,
+          "recall": 0.9978932584269663,
+          "f1-score": 0.9975429975429976,
+          "support": 1424.0
+        },
+        "Medium Risk": {
+          "precision": 0.982532751091703,
+          "recall": 0.989010989010989,
+          "f1-score": 0.9857612267250822,
+          "support": 455.0
+        },
+        "High Risk": {
+          "precision": 0.9285714285714286,
+          "recall": 0.7222222222222222,
+          "f1-score": 0.8125,
+          "support": 18.0
+        },
+        "Emergency": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 103.0
+        },
+        "accuracy": 0.9935,
+        "macro avg": {
+          "precision": 0.977074290529818,
+          "recall": 0.9272816174150444,
+          "f1-score": 0.9489510560670199,
+          "support": 2000.0
+        },
+        "weighted avg": {
+          "precision": 0.9933847472392772,
+          "recall": 0.9935,
+          "f1-score": 0.9933237933305704,
+          "support": 2000.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          1421,
+          3,
+          0,
+          0
+        ],
+        [
+          4,
+          450,
+          1,
+          0
+        ],
+        [
+          0,
+          5,
+          13,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          103
+        ]
+      ]
+    },
+    "Decision Tree": {
+      "model": "Decision Tree",
+      "accuracy": 1.0,
+      "f1_weighted": 1.0,
+      "report": {
+        "Safe": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 1424.0
+        },
+        "Medium Risk": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 455.0
+        },
+        "High Risk": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 18.0
+        },
+        "Emergency": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 103.0
+        },
+        "accuracy": 1.0,
+        "macro avg": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 2000.0
+        },
+        "weighted avg": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 2000.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          1424,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          455,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          18,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          103
+        ]
+      ],
+      "feature_importances": {
+        "latitude": 0.0,
+        "longitude": 0.0,
+        "hour": 0.0,
+        "day_type": 0.0,
+        "is_night": 0.0,
+        "is_alone": 0.0,
+        "crowd_density": 0.0,
+        "lighting_condition": 0.0,
+        "crime_area_score": 0.0,
+        "phone_motion_status": 0.0,
+        "walking_speed": 0.0,
+        "distance_from_home": 0.0,
+        "distance_from_safe_zone": 0.0,
+        "battery_level": 0.0,
+        "network_status": 0.0,
+        "weather_condition": 0.0,
+        "panic_button": 0.21351387791720458,
+        "unusual_movement": 0.0,
+        "time_spent_at_location": 0.0,
+        "nearest_trusted_contact_distance": 0.0,
+        "night_risk_score": 0.0,
+        "isolation_score": 0.0,
+        "movement_risk_score": 0.0,
+        "location_risk_score": 0.0,
+        "emergency_score": 0.0,
+        "total_risk_score": 0.7864861220827954
+      }
+    },
+    "XGBoost": {
+      "model": "XGBoost",
+      "accuracy": 0.9975,
+      "f1_weighted": 0.9974,
+      "report": {
+        "Safe": {
+          "precision": 1.0,
+          "recall": 0.9992977528089888,
+          "f1-score": 0.9996487530734106,
+          "support": 1424.0
+        },
+        "Medium Risk": {
+          "precision": 0.9891304347826086,
+          "recall": 1.0,
+          "f1-score": 0.994535519125683,
+          "support": 455.0
+        },
+        "High Risk": {
+          "precision": 1.0,
+          "recall": 0.7777777777777778,
+          "f1-score": 0.875,
+          "support": 18.0
+        },
+        "Emergency": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 103.0
+        },
+        "accuracy": 0.9975,
+        "macro avg": {
+          "precision": 0.9972826086956521,
+          "recall": 0.9442688826466916,
+          "f1-score": 0.9672960680497734,
+          "support": 2000.0
+        },
+        "weighted avg": {
+          "precision": 0.9975271739130435,
+          "recall": 0.9975,
+          "f1-score": 0.9973817427893613,
+          "support": 2000.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          1423,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          455,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          14,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          103
+        ]
+      ],
+      "feature_importances": {
+        "latitude": 0.0013756616972386837,
+        "longitude": 0.002206662204116583,
+        "hour": 0.0008700292673893273,
+        "day_type": 0.0004350817180238664,
+        "is_night": 6.445361577789299e-06,
+        "is_alone": 0.0010288661578670144,
+        "crowd_density": 7.4886302172672e-05,
+        "lighting_condition": 0.00047784505295567214,
+        "crime_area_score": 0.0009498113067820668,
+        "phone_motion_status": 0.00044315701234154403,
+        "walking_speed": 0.0011423277901485562,
+        "distance_from_home": 0.0007534828037023544,
+        "distance_from_safe_zone": 0.0014842712553218007,
+        "battery_level": 0.0008323955116793513,
+        "network_status": 0.0004304272879380733,
+        "weather_condition": 0.0013751182705163956,
+        "panic_button": 0.5478320717811584,
+        "unusual_movement": 0.0,
+        "time_spent_at_location": 0.0016392337856814265,
+        "nearest_trusted_contact_distance": 0.0011854011099785566,
+        "night_risk_score": 0.0003298681112937629,
+        "isolation_score": 0.0023925870191305876,
+        "movement_risk_score": 0.0,
+        "location_risk_score": 0.0022102496586740017,
+        "emergency_score": 0.0006555416621267796,
+        "total_risk_score": 0.42986857891082764
+      }
+    }
+  }
+}

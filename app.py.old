@@ -1,0 +1,126 @@
+"""
+SafeHer AI — Main Streamlit Application
+A professional AI-powered personal safety prediction system.
+"""
+
+import sys, os
+sys.path.insert(0, os.path.dirname(__file__))
+
+import streamlit as st
+import pandas as pd
+import numpy as np
+import plotly.graph_objects as go
+import plotly.express as px
+from pathlib import Path
+import datetime, json, time, random
+
+# ── page config (MUST be first Streamlit call) ────────────────────────────────
+st.set_page_config(
+    page_title="SafeHer AI",
+    page_icon="🛡️",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
+
+# ── local imports ─────────────────────────────────────────────────────────────
+from src.utils        import (get_risk_style, metric_card_html, alert_banner_html,
+                               model_exists, dataset_exists, load_metrics,
+                               EMERGENCY_NUMBERS, fake_live_reading)
+from src.alert_system import (Contact, trigger_alert, get_alert_history,
+                               DEFAULT_CONTACTS, build_sms_alert, build_whatsapp_alert,
+                               load_contacts, save_contacts)
+
+# ── global CSS ──────────────────────────────────────
+                            unsafe_allow_html=True,
+                        )
+
+                    st.success(f"🚨 **EMERGENCY ALERT SENT** to **{alert_result['contact'].name}** (Automatically identified as most important via Call History: {top_contact.recent_calls} recent calls).")
+                    
+                    with st.expander("View Alert Details"):
+                        ta, tb = st.columns(2)
+                        with ta:
+                            st.markdown("**📱 Sent SMS Alert**")
+                            st.code(alert_result["sms"], language=None)
+                        with tb:
+                            st.markdown("**💚 Sent WhatsApp Alert**")
+                            st.code(alert_result["whatsapp"], language=None)
+
+
+        except Exception as e:
+            st.error(f"Prediction error: {e}")
+            st.info("Make sure the model is trained first via the sidebar.")
+
+
+# ════════════════════════════════════════════════════════════════════════════════
+# PAGE: LIVE RISK DASHBOARD
+# ════════════════════════════════════════════════════════════════════════════════
+elif "Live Risk" in page:
+    st.markdown('<div class="sh-title">📡 Live Risk Dashboard</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sh-sub">Simulated real-time safety monitoring with continuous risk score updates.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sh-sub">Simulated real-time safety monitoring with continuous risk score updates.</div>', unsafe_allow_html=True)
+
+    # simulate a new reading
+    reading = fake_live_reading(np.mean(st.session_state.live_scores[-5:]))
+    st.session_state.live_scores.append(reading["risk_score_raw"])
+    if len(st.session_state.live_scores) > 60:
+        st.session_state.live_scores = st.session_state.live_scores[-60:]
+
+    score = reading["risk_score_pct"]
+    if score < 35:
+        level, color = "Safe", "#22c55e"
+    elif score < 55:
+        level, color = "Medium Risk", "#f59e0b"
+    elif score < 75:
+        level, color = "High Risk", "#ef4444"
+    else:
+        level, color = "Emergency", "#a855f7"
+
+    # KPI row
+    k1, k2, k3, k4 = st.columns(4)
+    k1.metric("Risk Score",     f"{score:.1f} / 100")
+    k2.metric("Risk Level",     level)
+    k3.metric("Night Mode",     "Active 🌙" if reading["is_night"] else "Inactive ☀️")
+    k4.metric("Last Updated",   reading["timestamp"])
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    col_gauge, col_trend = st.columns([1, 2])
+
+    with col_gauge:
+        fig_gauge = go.Figure(go.Indicator(
+            mode="gauge+number+delta",
+            value=score,
+            delta={"reference": st.session_state.live_scores[-2] * 100 if len(st.session_state.live_scores) > 1 else score,
+              
+            {
+                "Timestamp": r.timestamp,
+                "Risk Level": r.risk_level,
+                "Channel":    r.channel,
+                "Contact":    r.contact,
+                "Status":     r.status,
+            }
+            for r in history[:15]
+        ]
+        st.dataframe(pd.DataFrame(hist_rows), use_container_width=True, hide_index=True)
+
+    # extra ideas box
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown('<div class="sh-title" style="font-size:1.2rem;">🚀 Future Integrations</div>', unsafe_allow_html=True)
+    ideas = [
+        ("📱", "Twilio SMS API",    "Send real SMS/WhatsApp alerts with Twilio's messaging API."),
+        ("🎤", "Voice Trigger",     "Say 'Help!' to auto-trigger an emergency alert via speech recognition."),
+        ("📍", "Live GPS",          "Integrate with Google Maps SDK or device GPS for real-time tracking."),
+        ("📷", "YOLO Camera AI",    "Detect suspicious activity via webcam using YOLOv8 + OpenCV."),
+        ("📲", "Flutter Mobile App","Build a cross-platform mobile app with Flutter for iOS & Android."),
+    ]
+    icols = st.columns(len(ideas))
+    for (icon, title, desc), col in zip(ideas, icols):
+        col.markdown(
+            f'<div style="background:#1a1630;border:1px solid #2d2750;border-radius:10px;'
+            f'padding:14px;font-size:0.8rem;">'
+            f'<div style="font-size:1.3rem;">{icon}</div>'
+            f'<div style="color:#a78bfa;font-weight:600;margin:6px 0 4px;">{title}</div>'
+            f'<div style="color:#6b6488;line-height:1.5;">{desc}</div>'
+            f'</div>',
+            unsafe_allow_html=True,
+        )
